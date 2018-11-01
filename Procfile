@@ -1,2 +1,2 @@
 web: gunicorn server:app --log-file - 
-wokrer: python manage.py vk
+web: python manage.py vk
