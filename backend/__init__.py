@@ -25,7 +25,7 @@ from flask_migrate import Migrate
 # Creating the Flask app
 app = Flask(__name__,
             template_folder='../dist/psyhobot',
-            static_url_path='',
+            static_url_path='/dist/psyhobot',
             static_folder='../dist/psyhobot')
 
 # Configuring the app from config module
