@@ -1,109 +1,46 @@
 <div class="widgetframe">
-<section id ="app-chat" class="chat">
-
+  <section id ="app-chat" class="chat">
     <main class="wrapper ai-window">
+      <!-- Display Welcome Message -->
+      <div v-if="answers.length == 0 && online == true">
+        <h1 class="title mdc-typography--headline">
+          <div class="material-icons up">arrow_left</div>
+          <p>
+          Выбери пользователя слева, чтобы просмтореть его диалоги
+          </p>
+        </h1>
+      </div>
 
-        <!-- Display Welcome Message -->
-        <div v-if="answers.length == 0 && online == true">
-            <h1 class="title mdc-typography--headline">
-                <div class="material-icons up">arrow_upward</div>
-                <br>
-                Привет, напиши команду `start SYMBOL`
-                <p class="mdc-typography--body2">Ты можешь написать, напримен, "start XBTUSD". Для запуска стратегии ордеров.</p>
-            </h1>
-        </div>
+      <!-- Chat window -->
+      <table v-for="a in answers" class="chat-window">
+          <!-- Your messages -->
+          <tr>
+            <td class="bubble">Привет, я психобот! помочь?</td>
+          </tr>
 
-        <!-- Chat window -->
-        <table v-for="a in answers" class="chat-window">
-
-            <!-- Your messages -->
-            <tr>
-                <td class="bubble"></td>
-            </tr>
-
-            <!-- Dialogflow messages -->
-            <tr>
-                <td>
-
-                    <!-- Bot message types / Speech -->
-
-                    <div v-if="a.result.fulfillment.speech" class="bubble bot">
-
-                    </div>
-
-                    <!-- Google Assistant output -->
-                    <div v-for="r in a.result.fulfillment.messages">
-
-                        <!-- Bot message types / Card -->
-
-                        <div class="mdc-card" v-if="r.type == 'basic_card'">
-                            <!--
-                            <img :title="r.image.accessibilityText" :alt="r.image.accessibilityText" class="mdc-card__media-item" :src="r.image.url" v-if="r.image">
-                            -->
-                            <section class="mdc-card__primary">
-                              <h1 class="mdc-card__title mdc-card__title"></h1>
-                              <br>
-                              <h2 class="mdc-card__subtitle"></h2>
-                            </section>
-                            <section class="mdc-card__supporting-text">
-
-                            </section>
-                            <section class="mdc-card__supporting-text">
-                                <small></small>
-                            </section>
-                            <section class="mdc-card__actions" v-for="button in r.buttons">
-                                <a class="mdc-button mdc-button--compact mdc-button--primary mdc-card__action" target="_blank" :href="button.openUrlAction.url"> <i class="material-icons openlink">open_in_new</i></a>
-                            </section>
-                        </div>
-
-                        <!-- Bot message types / List -->
-
-                        <div class="mdc-list-group mdc-card" v-if="r.type == 'list_card'">
-                            <h3 class="mdc-list-group__subheader"></h3>
-                            <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list" v-for="item in r.items">
-                                <li class="mdc-list-item">
-                                  <!-->
-                                    <img :title="item.image.accessibilityText" :alt="item.image.accessibilityText" class="mdc-list-item__start-detail" width="56" height="56" :src="item.image.url" v-if="item.image"/>
-                                    <span class="mdc-list-item__text">
-
-                                      <span class="mdc-list-item__text__secondary"></span>
-                                    </span>
-                                  -->
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Bot message types / Link Chip -->
-
-                        <div v-if="r.type == 'link_out_chip'" class="chips">
-                            <a class="suggestion link" :href="r.url" target="_blank">
-                                 <i class="material-icons openlink">open_in_new</i>
-                            </a>
-                        </div>
-
-                        <!-- Bot message types / Suggestion Chip -->
-
-                        <div v-if="r.type == 'suggestion_chips'" class="chips">
-                            <div class="suggestion" v-for="s in r.suggestions">
-
-                            </div>
-                        </div>
-
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <p class="copyright" v-if="answers.length > 0" id="bottom">&nbsp;</p>
-
+          <!-- Dialogflow messages -->
+          <tr>
+            <td>
+              <!-- Bot message types / Speech -->
+              <div v-if="a.result.fulfillment.speech" class="bubble bot">Привет!</div>
+              <!-- Google Assistant output -->
+              <div v-for="r in a.result.fulfillment.messages">
+                <!-- Bot message types / Card -->
+                <!-- Bot message types / List -->
+                <!-- Bot message types / Link Chip -->
+                <!-- Bot message types / Suggestion Chip -->
+              </div>
+            </td>
+          </tr>
+      </table>
     </main>
 
     <!-- The input -->
     <div class="query">
-        <div class="wrapper" v-if="micro == false">
-          <input aria-label="Ask me something" autocomplete="off" v-model="query" class="queryform" placeholder="Ask me something..." autofocus type="text">
-          <i class="material-icons iicon">send</i>
-        </div>
+      <div class="wrapper" v-if="micro == false">
+        <input aria-label="Ask me something" autocomplete="off" v-model="query" class="queryform" placeholder="Спроси что-нибудь..." autofocus type="text">
+        <i class="material-icons iicon">send</i>
+      </div>
     </div>
-
-</section>
+  </section>
 </div>

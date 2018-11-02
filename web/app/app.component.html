@@ -1,2 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-chat-window></app-chat-window>
+<mat-drawer-container class="chat-container" autosize>
+  <mat-drawer #drawer mode="side" class="chat-sidenav" opened>
+    <app-dialog-list></app-dialog-list>
+  </mat-drawer>
+  <div class="chat-sidenav-content">
+    <app-chat-window></app-chat-window>
+  </div>
+</mat-drawer-container>

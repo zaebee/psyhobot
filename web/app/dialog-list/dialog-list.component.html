@@ -1,3 +1,11 @@
-<p>
-  dialog-list works!
-</p>
+<div class="listcontainer">
+  <h2>Диалоги</h2>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let link of links">
+       <a matLine href="...">{{ link }}</a>
+       <button mat-icon-button (click)="showInfo(link)">
+          <mat-icon>info</mat-icon>
+       </button>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
