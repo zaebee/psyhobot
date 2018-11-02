@@ -3,7 +3,7 @@
 *.pyc
 *.swp
 # compiled output
-/dist
+# /dist
 /tmp
 /out-tsc
 
