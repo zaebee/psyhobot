@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Dialog } from '../dialog';
 
 @Component({
   selector: 'app-dialog-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-list.component.sass']
 })
 export class DialogListComponent implements OnInit {
+
+  dialogs: Dialog[] = [];
 
   constructor() { }
 

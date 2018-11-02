@@ -1,9 +1,9 @@
 <div class="listcontainer">
   <h2>Диалоги</h2>
   <mat-nav-list>
-    <mat-list-item *ngFor="let link of links">
-       <a matLine href="...">{{ link }}</a>
-       <button mat-icon-button (click)="showInfo(link)">
+    <mat-list-item *ngFor="let dialog of dialogs">
+       <a matLine href="...">{{ dialog.name }}</a>
+       <button mat-icon-button (click)="showInfo(dialog)">
           <mat-icon>info</mat-icon>
        </button>
     </mat-list-item>
